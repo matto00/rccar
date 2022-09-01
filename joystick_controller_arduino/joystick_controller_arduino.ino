@@ -10,8 +10,8 @@ const int dcm_pin = 9; // digital dc motor pin
 
 char buffer[BUFSIZ];
 int switch_state = 1;
-float x_val = 511.0f;
-float y_val = 511.0f;
+int x_val = 511;
+int y_val = 511;
 
 
 void setup() {
@@ -23,12 +23,12 @@ void setup() {
 
 void loop() {
   switch_state = digitalRead(sw_pin);
-  x_val = float(analogRead(x_pin));
-  y_val = float(analogRead(y_pin));
+  x_val = analogRead(x_pin);
+  y_val = analogRead(y_pin);
   
-  sprintf(buffer, "Switch: %d\tX-Axis: %f\tY-Axis: %f", switch_state, x_val, y_val);
+  sprintf(buffer, "Switch: %d\tX-Axis: %d\tY-Axis: %d", switch_state, x_val, y_val);
   
-  if (y_val > 511.0f) digitalWrite(dcm_pin, HIGH);
+  if (y_val > 511) digitalWrite(dcm_pin, HIGH);
   else digitalWrite(dcm_pin, LOW);
   
   Serial.println(buffer);
