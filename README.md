@@ -1,6 +1,11 @@
 # RC Car
 
-## Modules to implement
+## Components implemented
+* Joystick
+* DC Motor
+
+
+## Components to implement
 * Servo Motor
 
 ## Components to get
