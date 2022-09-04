@@ -1,26 +1,15 @@
-//www.elegoo.com
-//2016.12.9
 
 #include "IRremote.h"
 
 int receiver = 13; // Signal Pin of IR receiver to Arduino Digital Pin 11
-int remote_output;
+int ir_res_value;
 
 IRrecv irrecv(receiver);
 decode_results* results;
 
-
-
-
-void translateIR()
-{
-  switch((*results).value)
-  {
-     
-    default: 
-      Serial.println(" other button   ");
-  }
-  delay(500); // Do not get immediate repeat
+int translateIR() {
+  ir_res_value = (*results).value;
+  return (*results).value;
 }
 
 
@@ -37,8 +26,7 @@ void loop()
 {
   if (irrecv.decode(results))
   {
-    // Get value
-    (*results).value;
+    translateIR(); 
     irrecv.resume();
   }  
 }
